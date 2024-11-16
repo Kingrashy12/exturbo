@@ -29,10 +29,10 @@
 
 ## Installation
 
-Install ExCLI globally using npm:
+Install ExTurbo globally using npm:
 
 ```bash
-npm install -g excli
+npm install -g exturbo
 ```
 
 ## Commands
@@ -49,7 +49,7 @@ Below are list of available commands.
 To scaffold a new Express.js project, run the following command:
 
 ```bash
-npx excli --create
+npx exturbo --create
 ```
 
 You will be prompted to provide:
@@ -63,7 +63,7 @@ You will be prompted to provide:
 ### Running the CLI
 
 ```bash
-npx excli --create
+npx exturbo --create
 ```
 
 **Prompts**:
