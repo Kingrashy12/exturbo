@@ -1,7 +1,7 @@
 {
-  "name": "excli",
+  "name": "exturbo",
   "version": "1.0.0",
-  "description": "An intuitive CLI tool for creating Express.js applications effortlessly.",
+  "description": "A fast and intuitive CLI tool for creating fully-configured Express.js applications in seconds.",
   "main": "index.js",
   "type": "module",
   "bin": "./index.js",

@@ -1,6 +1,6 @@
-# ExCLI - Your Express App CLI
+# ExTurbo - Turbocharge Your Express App Development 🚀
 
-**ExCLI** is a simple, intuitive CLI tool for creating Express.js applications effortlessly. Whether you're a beginner or an experienced developer, ExCLI helps you get started with fully-configured projects in seconds!
+**ExTurbo** is a blazing-fast, intuitive CLI tool designed to turbocharge your Express.js application development. Whether you're a beginner or a seasoned developer, **ExTurbo** enables you to set up fully-configured projects in seconds with simplicity and productivity in mind!
 
 ---
 
