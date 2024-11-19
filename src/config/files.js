@@ -1,3 +1,5 @@
+export const env = crypto.randomUUID();
+
 export const folders = [
   "controller",
   "routes",
@@ -6,57 +8,57 @@ export const folders = [
   "config",
 ];
 
-export const pkgFile = ({ extra, exDev, main, tsServe, exScript, name }) => {
-  return `
-{
-  "name": "${name}",
-  "version": "1.0.0",
-  "main": "server.${main}",
-  "scripts": {
-  ${exScript ? exScript : ""}${exScript ? "," : ``}
-    "start": "npx nodemon server.${main}"${tsServe ? "," : ``}
-    ${tsServe ? tsServe : ""}
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "jsonwebtoken": "^9.0.2"${extra ? "," : ""}
-    ${extra ? extra : ""}
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.0"${exDev ? "," : ""}
-    ${exDev ? exDev : ""}
-  }
-}
-`;
-};
+// export const pkgFile = ({ extra, exDev, main, tsServe, exScript, name }) => {
+//   return `
+// {
+//   "name": "${name}",
+//   "version": "1.0.0",
+//   "main": "server.${main}",
+//   "scripts": {
+//     "start": "npx nodemon server.${main}"${tsServe ? "," : ""}
+//     ${exScript ? exScript : ""}${exScript ? "," : ""}
+//     ${tsServe ? tsServe : ""}
+//   },
+//   "keywords": [],
+//   "author": "",
+//   "license": "ISC",
+//   "dependencies": {
+//     "body-parser": "^1.20.2",
+//     "cors": "^2.8.5",
+//     "dotenv": "^16.4.5",
+//     "express": "^4.21.1",
+//     "jsonwebtoken": "^9.0.2"${extra ? "," : ""}
+//     ${extra ? extra : ""}
+//   },
+//   "devDependencies": {
+//     "nodemon": "^3.0.0"${exDev ? "," : ""}
+//     ${exDev ? exDev : ""}
+//   }
+// }
+// `;
+// };
 
-export const extraPkg = {
-  ts_dev: `
-"ts-node": "^10.9.2",
-"typescript": "^5.4.5",
-"@types/cors": "^2.8.17",
-"@types/express": "^4.17.21",
-"@types/jsonwebtoken": "^9.0.6"
-    `,
-  mongo: `"mongoose": "^8.8.1"`,
-  pg: `"pg": "^8.13.1"`,
-  pg_dev: `
-"ts-node": "^10.9.2",
-"typescript": "^5.4.5",
-"@types/cors": "^2.8.17",
-"@types/express": "^4.17.21",
-"@types/jsonwebtoken": "^9.0.6",
-"@types/pg":"^8.11.10"
-      `,
-  tsServe: `"serve": "tsc && node dist/server.js"`,
-  exScript: `"build": "tsc"`,
-};
+// export const extraPkg = {
+//   ts_dev: `
+// "ts-node": "^10.9.2",
+// "typescript": "^5.4.5",
+// "@types/cors": "^2.8.17",
+// "@types/express": "^4.17.21",
+// "@types/jsonwebtoken": "^9.0.6"
+//     `,
+//   mongo: `"mongoose": "^8.8.1"`,
+//   pg: `"pg": "^8.13.1"`,
+//   pg_dev: `
+// "ts-node": "^10.9.2",
+// "typescript": "^5.4.5",
+// "@types/cors": "^2.8.17",
+// "@types/express": "^4.17.21",
+// "@types/jsonwebtoken": "^9.0.6",
+// "@types/pg":"^8.11.10"
+//       `,
+//   tsServe: `"serve": "tsc && node dist/server.js"`,
+//   exScript: `"build": "tsc"`,
+// };
 
 export const envFile = () => {
   const pg = `
@@ -64,10 +66,12 @@ export const envFile = () => {
   PG_DB=YourDatabase
   PG_PASS=YourPassword
   PG_HOST=YourHost
+  JWT_SECRET="${env}"
     `;
 
   const mongo = `
   DB_STRING=Your Connection String
+  JWT_SECRET="${env}"
     `;
 
   return { pg, mongo };
@@ -154,7 +158,7 @@ app.get('/', (req, res) => {
 // Define port and start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log('Server running on port {PORT}');
+  console.log('Server running on port http://localhost:{PORT}');
 });
     `,
   ts: `
@@ -225,5 +229,4 @@ export const tsconfigFile = `
   },
   "include": ["./**/*.ts", "./types/**/*.d.ts"]
 }
-
 `;

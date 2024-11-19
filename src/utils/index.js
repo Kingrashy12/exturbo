@@ -20,3 +20,10 @@ export const createFile = async (name, content) => {
     logger.warning(err);
   }
 };
+
+export const updateFile = async () => {
+  try {
+  } catch (error) {
+    logger.warning(error);
+  }
+};

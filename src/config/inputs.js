@@ -3,17 +3,16 @@ import { createFile, createPath } from "../utils/index.js";
 import {
   dbConfig,
   envFile,
-  extraPkg,
   folders,
   gitignore,
   mainFile,
   nodemonFile,
-  pkgFile,
   tsconfigFile,
 } from "./files.js";
 import { exConfig } from "./config.ex.js";
 import { logger } from "../logger.js";
 import { createFileAsync, createFileOnLang } from "../utils/func.js";
+import { pkgFiles } from "./files/pkg.js";
 
 /** Creates the package.json file based on language and database configuration. */
 const createPkgFile = async (name, lang, db, project_name) => {
@@ -25,19 +24,12 @@ const createPkgFile = async (name, lang, db, project_name) => {
       case "JavaScript":
         return createFile(
           `${name}/package.json`,
-          pkgFile({ extra: extraPkg.mongo, main: "js", name: project_name })
+          pkgFiles({ main: "js", name: project_name }).mongo
         );
       case "TypeScript":
         return createFile(
           `${name}/package.json`,
-          pkgFile({
-            exDev: extraPkg.ts_dev,
-            extra: extraPkg.mongo,
-            main: "ts",
-            exScript: extraPkg.exScript,
-            tsServe: extraPkg.tsServe,
-            name: project_name,
-          })
+          pkgFiles({ main: "ts", name: project_name }).mongoTs
         );
     }
   } else if (isPostgres) {
@@ -45,35 +37,25 @@ const createPkgFile = async (name, lang, db, project_name) => {
       case "JavaScript":
         return createFile(
           `${name}/package.json`,
-          pkgFile({ extra: extraPkg.pg, main: "js", name: project_name })
+          pkgFiles({ main: "js", name: project_name }).pg
         );
       case "TypeScript":
         return createFile(
           `${name}/package.json`,
-          pkgFile({
-            exDev: extraPkg.pg_dev,
-            extra: extraPkg.pg,
-            main: "ts",
-            tsServe: extraPkg.tsServe,
-            exScript: extraPkg.exScript,
-            name: project_name,
-          })
+          pkgFiles({ main: "ts", name: project_name }).pgTs
         );
     }
   } else {
     switch (lang) {
       case "JavaScript":
-        return createFile(`${name}/package.json`, pkgFile({ main: "js" }));
+        return createFile(
+          `${name}/package.json`,
+          pkgFiles({ main: "js", name: project_name }).mainPkg
+        );
       case "TypeScript":
         return createFile(
           `${name}/package.json`,
-          pkgFile({
-            exDev: extraPkg.ts_dev,
-            main: "ts",
-            tsServe: extraPkg.tsServe,
-            exScript: extraPkg.exScript,
-            name: project_name,
-          })
+          pkgFiles({ main: "ts", name: project_name }).mainTs
         );
     }
   }

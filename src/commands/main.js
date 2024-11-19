@@ -43,6 +43,7 @@ const parseArguments = () => {
     "--clean": Boolean,
     "--reset": Boolean,
     "--help": Boolean,
+    "--auth": Boolean,
   });
 };
 
