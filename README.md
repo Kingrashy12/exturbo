@@ -1,3 +1,5 @@
+> **⚠️ Deprecation Notice:** This package has been deprecated. Please use [NexuJS](https://www.npmjs.com/package/nexujs) instead.
+
 # ExTurbo - Turbocharge Your Express App Development 🚀
 
 **ExTurbo** is a blazing-fast, intuitive CLI tool designed to turbocharge your Express.js application development. Whether you're a beginner or a seasoned developer, **ExTurbo** enables you to set up fully-configured projects in seconds with simplicity and productivity in mind!

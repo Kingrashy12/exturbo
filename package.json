@@ -1,6 +1,6 @@
 {
   "name": "exturbo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A fast and intuitive CLI tool for creating fully-configured Express.js applications in seconds.",
   "main": "index.js",
   "type": "module",
